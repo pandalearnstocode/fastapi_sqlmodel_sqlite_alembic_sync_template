@@ -138,12 +138,6 @@ alembic init alembic
 
 ```bash
 alembic revision --autogenerate -m "init"
-```
-
-* A file like this will be generated in `d0414fdac78b_init.py` will be generated in `alembic/versions`. Add this line `import sqlmodel` in the import section of this `<hash>__init.py` file.
-
-
-```bash
 alembic upgrade head
 ```
 
