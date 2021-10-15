@@ -1,4 +1,4 @@
-# Creating a minimal Fast API app for local development: FastAPI + SQLModel + SQLite + Alembic
+# Creating a minimal Fast API app for local development: FastAPI + SQLModel + SQLite + Alembic [Sync version]
 
 This is example template which can be used for local development.
 
@@ -176,3 +176,18 @@ uvicorn app.main:app --reload
 curl -X POST http://127.0.0.1:8000/task/ -H 'accept: application/json' -H 'Content-Type: application/json' -d '{"task_name": "just added task","task_description":"a newly created task"}'
 ```
 * after making the post call validate the db records are being updated using `DB browser for SQLite`
+
+### Reference:
+
+* https://testdriven.io/blog/fastapi-sqlmodel/
+* https://fastapi.tiangolo.com/advanced/async-sql-databases/
+* https://github.com/encode/databases
+* https://github.com/testdrivenio/fastapi-sqlmodel-alembic
+* https://github.com/Lance0404/asiayo-rest-sql
+* https://fastapi.tiangolo.com/tutorial/sql-databases/
+* https://github.cdnweb.icu/smartgic/shortgic
+* https://testdriven.io/blog/fastapi-sqlmodel/
+* https://python.plainenglish.io/building-a-phone-directory-with-mysql-fastapi-and-angular-cd48673904f4
+* https://alembic.sqlalchemy.org/en/latest/autogenerate.html
+* https://towardsdatascience.com/build-an-async-python-service-with-fastapi-sqlalchemy-196d8792fa08
+* https://hackernoon.com/how-to-set-up-fastapi-ormar-and-alembic
