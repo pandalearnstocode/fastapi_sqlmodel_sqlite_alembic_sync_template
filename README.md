@@ -44,7 +44,7 @@ conda activate fastapi_sqlmodel
 pip install fastapi[all] sqlmodel alembic
 ```
 
-### Step 1: Create models in `models.py`
+### Step 2: Create models in `models.py`
 
 ```python
 from sqlmodel import SQLModel, Field
@@ -60,7 +60,7 @@ class TaskCreate(TaskBase):
 ```
 
 
-### Step 2: Create settings related to DB in `db.py`
+### Step 3: Create settings related to DB in `db.py`
 
 ```python
 from sqlmodel import Session, SQLModel, create_engine
@@ -78,7 +78,7 @@ def get_session():
         yield session
 ```
 
-### Step 3: Define API endpoints in `main.py`
+### Step 4: Define API endpoints in `main.py`
 
 ```python
 from fastapi import FastAPI, Depends
@@ -104,7 +104,7 @@ def create_task(task: TaskCreate, session: Session = Depends(get_session)):
     session.refresh(db_task)
     return db_task
 ```
-### Step 4: Test API endpoints
+### Step 5: Test API endpoints
 
 
 ```bash
@@ -117,15 +117,15 @@ __Note:__
 * a `database.db` file will be create in project root directory.
 * after making the post call validate the db records are being updated using `DB browser for SQLite`
 
-### Step 5: Setup alembic
+### Step 6: Setup alembic
 
-#### Step 5a: Generate alembic settings
+#### Step 6a: Generate alembic settings
 
 ```bash
 alembic init alembic
 ```
 
-#### Step 5b: Update alembic settings
+#### Step 6b: Update alembic settings
 
 * replace `sqlalchemy.url = driver://user:pass@localhost/dbname` in `alembic.ini` with `sqlite:///database.db`.
 * in `alembic/env.py` file add `from sqlmodel import SQLModel` in the import section.
@@ -134,14 +134,14 @@ alembic init alembic
 * in `alembic/script.py.mako` add `import sqlmodel` in the import section.
 
 
-#### Step 5c: Generate alembic migration settings
+#### Step 6c: Generate alembic migration settings
 
 ```bash
 alembic revision --autogenerate -m "init"
 alembic upgrade head
 ```
 
-### Step 6: Update data models in `models.py`
+### Step 7: Update data models in `models.py`
 
 ```python
 from sqlmodel import SQLModel, Field
@@ -158,18 +158,18 @@ class TaskCreate(TaskBase):
     pass
 ```
 
-### Step 7: Update API endpoints in `main.py`
+### Step 8: Update API endpoints in `main.py`
 
 In this case, endpoints remains unchanged but in a realistic scenario endpoints has to be changed to take the new information into account.
 
-### Step 8: Run DB migration
+### Step 9: Run DB migration
 
 ```bash
 alembic revision --autogenerate -m "add description"
 alembic upgrade head
 ```
 
-### Step 9: Test updated API endpoints
+### Step 10: Test updated API endpoints
 
 ```bash
 uvicorn app.main:app --reload
