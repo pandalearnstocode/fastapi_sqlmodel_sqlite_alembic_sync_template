@@ -1,0 +1,1 @@
+# fastapi_sqlmodel_sqlite_alembic_sync_template
