@@ -4,7 +4,7 @@ This is example template which can be used for local development.
 
 ## Workflow:
 
-* write data base models
+* write database models
 * write database settings
 * write endpoints
 * test apis
